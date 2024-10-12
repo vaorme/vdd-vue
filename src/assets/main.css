@@ -1,0 +1,126 @@
+@import './base.css';
+
+#app {
+	max-width: 1280px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 2rem;
+	font-weight: normal;
+}
+a{
+	text-decoration: none;
+}
+header.header{
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+    border-bottom: 1px solid var(--primary-dark);
+}
+header.header .wrapper{
+	display: flex;
+	gap: 1em;
+	justify-content: space-between;
+}
+header.header .logo a,
+header.header .logo a img{
+	display: block;
+}
+header.header .logo a img{
+	max-width: 48px;
+}
+main.main .wrapper{
+	display: grid;
+	gap: 2em;
+	grid-template-columns: 3fr 1fr;
+}
+main.main .explorer{
+	padding-right: 2em;
+	border-right: 1px solid var(--primary-dark);
+}
+main.main .media .media-item.pinned{
+	order: -1;
+}
+main.main .media .media-item.folder{
+	order: -2;
+}
+main.main .media .media-item .box{
+	position: relative;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	min-height: 120px;
+	padding: 1rem;
+	overflow: hidden;
+	border: 1px solid #ddd;
+	border-radius: 0.5rem;
+	transition: border .4s ease;
+}
+main.main .media .media-item .box:hover{
+	border-color: var(--primary-dark);
+}
+main.main .media .media-item .box .image{
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100px;
+	max-height: 100px;
+}
+main.main .media .media-item .box .image img{
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+main.main .media .media-item .box h4{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 10px;
+}
+main.main .media .media-item .box .actions{
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: 0;
+	display: flex;
+	visibility: hidden;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: visibility .4s ease, opacity .4s ease;
+}
+main.main .media .media-item:hover .box .actions{
+	opacity: 1;
+	visibility: visible;
+}
+main.main .media .media-item .box .actions button{
+	padding: 5px 10px;
+	border-radius: 0;
+}
+main.main .media .media-item .box .actions button svg{
+	max-width: 14px;
+}
+@media (max-width: 1024px){
+	main.main .wrapper{
+		grid-template-columns: 100%;
+	}
+	main.main .explorer{
+		border-right: 0;
+		padding-top: 2em;
+		border-top: 1px solid var(--primary-dark);
+	}
+	main.main .guest,
+	main.main .frmo{
+		order: -1
+	}
+}
+@media (max-width: 768px){
+	main.main .media .media-item .box .image{
+		min-height: 180px;
+		max-height: 180px;
+	}
+}
