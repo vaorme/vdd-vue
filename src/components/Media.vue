@@ -9,6 +9,7 @@
 	import { humanizeFileSize, isImage } from '@/helpers/helpers';
 	import { onMounted, watch, onUnmounted, ref } from 'vue';
 	import { useRoute, useRouter } from 'vue-router';
+	import { useToast } from "primevue/usetoast";
 	import Button from "primevue/button";
 	import Skeleton from 'primevue/skeleton';
 	import Message from 'primevue/message';
@@ -26,6 +27,7 @@
 	import Deleteicon from './icons/Deleteicon.vue';
 	import EditIcon from './icons/EditIcon.vue';
 
+	const toast = useToast();
 	const route = useRoute();
 	const router = useRouter();
 	const confirm = useConfirm();
@@ -42,6 +44,10 @@
 	}
 
 	const dialogFolder = async () =>{
+		if(!mediaStore.folderName){
+			toast.add({severity: 'error', summary: 'Error', detail: "Folder name is required", life: 3000});
+			return;
+		}
 		const res = await mediaStore.createFolder();
 		if(res?.status){
 			visible.value = false;

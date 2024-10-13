@@ -3,7 +3,6 @@ import { db, storage } from '@/config/firebase';
 import { doc, addDoc, getDoc, updateDoc, deleteDoc,collection, query, where, onSnapshot } from 'firebase/firestore';
 import { ref, deleteObject } from "firebase/storage";
 import { useAuthStore } from '@/stores/authStore';
-import { errorMessages } from 'vue/compiler-sfc';
 
 export const useMediaStore = defineStore('media', {
 	state: () => ({
